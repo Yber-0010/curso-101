@@ -54,7 +54,10 @@
                     </style>
                     <div class="flex justify-center pt-8  sm:pt-0">
                         <div class="h-1 w-auto text-gray-700 sm:h-10">
-                            curso 101 laravel
+                            <h3>
+                            curso 101 laravel <br>
+                            coloca tu nombre luego de la ruta url  ejemplo: /nombre
+                            </h3>
                         </div>
                     </div>
                     <div class="flex justify-center pt-8  sm:pt-0">
