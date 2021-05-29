@@ -48,34 +48,42 @@
                 {{-- SALUDO --}}
                 <div>
                     <style>
-                        .saludo {
-                            font-size:25px;
-                        }
-                        .estilo {
+                        .estilo{
                             text-decoration: none;
                             color: #363940;
                             padding: 10px 15px;
                             display: inline-block;
                         }
 
-                        .estilo:hover {
+                        .estilo:hover{
                             color: #8b919c;
                         }
-                        
+                        .table {
+                            width: 100%;
+                            border: 2px solid rgba(226, 226, 226, 0.404);
+                            text-align: center;   
+                        }
                     </style>
                     <div class="flex justify-center pt-8  sm:pt-0">
                         <div class="h-1 w-auto text-gray-700 sm:h-10">
                             <h3>
                             curso 101 laravel <br>
-                            coloca tu nombre luego de la ruta url  ejemplo: /nombre
                             </h3>
                         </div>
                     </div>
                     <div class="flex justify-center pt-8  sm:pt-0">
                         <div class="h-1 w-auto text-gray-700 sm:h-10">
-                            <div class="saludo">
-                                <h1 id="nombre">Bienvenido {{$nombre}}</h1>                            
+                            
                                 {{------- profesiones --}}
+                                <div class="estilo">
+                                    <a href="/">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                                        <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                                    </svg>
+                                    Home
+                                    </a>
+                                </div>
                                 <div class="estilo">
                                     <a href="{{route('profesiones')}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-briefcase" viewBox="0 0 16 16">
@@ -83,14 +91,35 @@
                                     </svg>
                                     Profesiones
                                     </a>
-                                </div>    
+                                </div>
+
+                                
                                 {{-- fin profesiones --}}
-                            </div>
+                            {{-- tabla profesiones --}}
+                
+                <h1>listado de profesiones</h1><br>
+                <table class="table">
+                    <thead>
+                       <th>Fecha</th>
+                       <th>Nombre</th>
+                       <th>Modificar</th>
+                       <th>Eliminar</th>
+                     </thead>
+                     @foreach($profesiones as $profesion)
+                     <tr>
+                       <td>{{ $profesion->created_ad}}</td>
+                       <td>{{ $profesion->nombre}}</td>
+                       <td></td>
+                       <td></td>
+                    </tr>
+                     @endforeach  
+                  </table>
+                {{-- fin tabla profesiones --}}
                         </div>
-                    </div>
-                    
+                    </div> 
                 </div>
-                {{-- ------ --}}
+                
+                {{-- fin saludo --}}
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-6">
@@ -176,4 +205,5 @@
         </div>
     </body>
 </html>
+
 

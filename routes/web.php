@@ -22,3 +22,6 @@ Route::get('/{nombre?}', function ($nombre=null) {
         return view('welcome',['nombre'=>$nombre]);    
     }
 });
+Route::namespace("App\\Http\\Controllers")->group(function () {
+    Route::get('/profesiones/index','ProfesionesController@index')->name('profesiones');
+});
