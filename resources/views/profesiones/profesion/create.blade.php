@@ -18,6 +18,16 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+            button {
+                background-color: rgb(0, 0, 0);
+                border-radius: 5px;
+                border: 0px;
+                color: rgb(255, 255, 255);
+                cursor: pointer;
+                margin-right: 5px;
+                margin-left: 5px;
+                padding: 10px;
+            }
         </style>
         {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
     </head>
@@ -48,20 +58,37 @@
                 {{-- SALUDO --}}
                 <div>
                     <style>
-                        .estilo{
+                        .estilo 
+                        {
                             text-decoration: none;
                             color: #363940;
                             padding: 10px 15px;
                             display: inline-block;
                         }
 
-                        .estilo:hover{
+                        .estilo:hover 
+                        {
                             color: #8b919c;
                         }
-                        .table {
+                        .table 
+                        {
                             width: 100%;
                             border: 2px solid rgba(226, 226, 226, 0.404);
                             text-align: center;   
+                        }
+                        .input 
+                        {
+                            background-color: #eee;
+                            border: 0;
+                            border-radius: 5px;
+                            padding: 10px;
+                            margin: 10px;
+                            width: 180px;
+                        }
+                        .label 
+                        {
+                            font-size: x-large;
+                            
                         }
                     </style>
                     <div class="flex justify-center pt-8  sm:pt-0">
@@ -74,7 +101,7 @@
                     <div class="flex justify-center pt-8  sm:pt-0">
                         <div class="h-1 w-auto text-gray-700 sm:h-10">
                             
-                                {{------- profesiones --}}
+                                {{---- navbar --}}
                                 <div class="estilo">
                                     <a href="/">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
@@ -85,96 +112,57 @@
                                     </a>
                                 </div>
                                 <div class="estilo">
-                                    <a href="{{route('profesiones')}}">
+                                    <a href="/profesiones/profesion">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-briefcase" viewBox="0 0 16 16">
                                         <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5zm1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0zM1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5z"/>
                                     </svg>
                                     Profesiones
                                     </a>
-                                </div>
-
-                                
-                                {{-- fin profesiones --}}
-                            {{-- tabla profesiones --}}
-                
-                <h1>listado de profesiones</h1><br>
-                <table class="table">
-                    <thead>
-                       <th>Fecha</th>
-                       <th>Nombre</th>
-                       <th>Modificar</th>
-                       <th>Eliminar</th>
-                     </thead>
-                     @foreach($profesiones as $profesion)
-                     <tr>
-                       <td>{{ $profesion->created_ad}}</td>
-                       <td>{{ $profesion->nombre}}</td>
-                       <td></td>
-                       <td></td>
-                    </tr>
-                     @endforeach  
-                  </table>
-                {{-- fin tabla profesiones --}}
+                                </div>    
+                                {{-- fin navbar --}}
+                            
                         </div>
                     </div> 
                 </div>
-                
                 {{-- fin saludo --}}
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
+                {{-- Profesiones --}}
+                
+                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg" style="width:100%">
+                    <div class="grid grid-cols-1 md:grid-cols-1">
                         <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
+                            <div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        @if (count ($errors)>0)
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                        <li>{{$error}}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        @endif
+                                    </div>
+                                </div> 
+                                <h1>Nueva profesion</h1>
+                                
+                                <form method="POST" action="/profesiones/profesion" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    <div class="form-group">
+                                        <label class="label" for="nombre">Nombre</label>
+                                        <input type="text" name="nombre" class="input" id="nombre" placeholder="Nombre..." value="{{ old('nombre') }}" required>
+                                    </div>
+                                    <a href="/profesiones/profesion/create">
+                                        <button>guardar</button>
+                                    </a>
+                                </form>
 
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                {{-- fin profesiones --}}
 
                 <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
                     <div class="text-center text-sm text-gray-500 sm:text-left">

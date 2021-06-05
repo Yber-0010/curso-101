@@ -23,5 +23,5 @@ Route::get('/{nombre?}', function ($nombre=null) {
     }
 });
 Route::namespace("App\\Http\\Controllers")->group(function () {
-    Route::get('/profesiones/index','ProfesionesController@index')->name('profesiones');
+    Route::resource('/profesiones/profesion','ProfesionesController');
 });

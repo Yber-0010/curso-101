@@ -9,4 +9,5 @@ class Profesiones extends Model
 {
     use HasFactory;
     protected $table = 'profesiones';
+    protected $primaryKey='id_profesion';
 }
