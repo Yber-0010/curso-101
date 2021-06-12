@@ -24,13 +24,14 @@ class ProfesionesRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'required|max:100'
+            'nombre'=>'required|max:100|min:4',
         ];
     }
     public function messages()
     {
         return [
-            'nombre.required'=>"El campo nombre es requerido."
+            'nombre.required'=>"El campo nombre es requerido.",
+            'nombre.min'=>"El campo nombre debe tener 4 caracteres minimo."
         ];
     }
 }

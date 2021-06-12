@@ -152,7 +152,7 @@
 
                                     <div class="form-group">
                                         <label class="label" for="nombre">Nombre</label>
-                                        <input type="text" name="nombre" class="input" id="nombre" placeholder="Nombre..." value="{{ $profesiones->nombre }}" required>
+                                        <input type="text" name="nombre" class="input" id="nombre" placeholder="Nombre..." value="{{ old('nombre',$profesiones->nombre) }}" required>
                                     </div>
                                     
                                     <button type="submit" value="submit">guardar</button>
